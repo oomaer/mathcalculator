@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .container{
+            margin-top: 4rem;
+        }
+
+        .calc-card{
+            width: 85vw;
+            margin: 0 auto;
+            max-width: 700px;
+            padding: 1rem;
+            border: 1px solid rgb(216, 214, 214);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            justify-content: center;
+        }
+
+        .calc-input-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .calc-input-container label{
+            margin-bottom: 0.5rem;
+        }
+
+        .calc-input-container input{
+            padding: 0.4rem 1rem;
+            border: 1px solid rgb(209, 208, 208);
+            outline: none;
+        }
+
+
+        .calculateBtnContainer{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        #caclulateBtn{
+            border: none;
+            color: white;
+            background-color: rgb(6, 143, 6);
+            padding: 1rem 2rem;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: transform 0.4s ease-in-out;
+        }
+        #caclulateBtn:hover{
+            transform: scale(1.1);
+        }
+
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="calc-card">
+
+            <div class="calc-input-container">
+                <label for = 'orignal-price-used'>Orignal Price Used</label>
+                <input type='number' id = 'orignal-price-used' />
+            </div>
+
+            <div class="calc-input-container">
+                <label for = 'cost-of-supplies'>Cost of Supplies</label>
+                <input type='number' id = 'cost-of-supplies' />
+            </div>
+
+            <div class="calc-input-container">
+                <label for = 'hour-rate'>Hourly Rate</label>
+                <input type='number' id = 'hour-rate' />
+            </div>
+
+            <div class="calc-input-container">
+                <label for = 'hours-invested'>Hours Invested</label>
+                <input type='number' id = 'hours-invested' />
+            </div>
+
+            <div class="calculateBtnContainer">
+                <button id = 'caclulateBtn' onclick="calculateTotal()">Calculate</button>
+            </div>
+
+            <div class="result-container">
+                <p id = 'total-result'></p>
+            </div>
+            
+        </div>
+
+
+
+    </div>
+
+
+    <script>
+
+        let orignal_price_used = 0;
+        let cost_of_supplies = 0;
+        let hour_rate = 0;
+        let hours_invested = 0;
+        let total
+
+        const calculateTotal = () => {
+
+            if(document.getElementById('orignal-price-used').value !== ""){
+                orignal_price_used = document.getElementById('orignal-price-used').value
+            }
+            if(document.getElementById('cost-of-supplies').value !== ""){
+                cost_of_supplies = document.getElementById('cost-of-supplies').value
+            }
+            if(document.getElementById('hour-rate').value !== ""){
+                hour_rate = document.getElementById('hour-rate').value
+            }
+            if(document.getElementById('hours-invested').value !== ""){
+                hours_invested = document.getElementById('hours-invested').value
+            }
+
+            console.log(orignal_price_used, cost_of_supplies, hour_rate, hours_invested);
+
+            total = (((orignal_price_used + cost_of_supplies) * 1.2) + ((hour_rate * hours_invested) * 1.2) * 1.3);
+            document.getElementById('total-result').innerHTML = `The total is: <b>${total}</b>`; 
+        }
+
+
+
+    </script>
+    
+</body>
+
+
+</html>
