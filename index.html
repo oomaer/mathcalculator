@@ -117,27 +117,28 @@
         let cost_of_supplies = 0;
         let hour_rate = 0;
         let hours_invested = 0;
-        let total
+        let total;
 
         const calculateTotal = () => {
 
             if(document.getElementById('orignal-price-used').value !== ""){
-                orignal_price_used = parseInt(document.getElementById('orignal-price-used').value)
+                orignal_price_used = parseFloat(document.getElementById('orignal-price-used').value)
             }
             if(document.getElementById('cost-of-supplies').value !== ""){
-                cost_of_supplies = parseInt(document.getElementById('cost-of-supplies').value)
+                cost_of_supplies = parseFloat(document.getElementById('cost-of-supplies').value)
             }
             if(document.getElementById('hour-rate').value !== ""){
-                hour_rate = parseInt(document.getElementById('hour-rate').value)
+                hour_rate = parseFloat(document.getElementById('hour-rate').value)
             }
             if(document.getElementById('hours-invested').value !== ""){
-                hours_invested = parseInt(document.getElementById('hours-invested').value)
+                hours_invested = parseFloat(document.getElementById('hours-invested').value)
             }
 
-            // console.log(orignal_price_used, cost_of_supplies, hour_rate, hours_invested);
+            console.log(orignal_price_used, cost_of_supplies, hour_rate, hours_invested);
 
             total = (((orignal_price_used + cost_of_supplies) * 1.2) + ((hour_rate * hours_invested) * 1.2)) * 1.3;
-            document.getElementById('total-result').innerHTML = `The total is: <b>${total}</b>`; 
+            
+            document.getElementById('total-result').innerHTML = `The total is: <b>${Math.round((total + Number.EPSILON) * 1000) / 1000}</b>`; 
         }
 
 
